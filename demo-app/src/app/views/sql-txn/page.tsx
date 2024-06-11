@@ -41,7 +41,7 @@ type completion_op = {
   error?: string
 }
 
-const DEFAULT_INVOCATION: invoke_op = {
+const SAMPLE_INVOCATION: invoke_op = {
   id: 0,
   type: "invoke",
   value: [
@@ -51,16 +51,17 @@ const DEFAULT_INVOCATION: invoke_op = {
     { f: "r", k: 0, v: null }
   ]
 }
-
 const DEFAULT_COMPLETION: completion_op = {
   id: 0,
   type: "info",
   value: []
 }
 
+type txnStatuses = "unknown" | "executing" | "ok" | "info" | "fail"
+
 // page view
 export default function SQLTxnPage() {
-  const [txnStatus, setTxnStatus] = React.useState("unknown")
+  const [txnStatus, setTxnStatus] = React.useState("unknown" as txnStatuses)
   const [completion, setCompletion] = React.useState(DEFAULT_COMPLETION)
   const powerSync = usePowerSync()
 
@@ -122,7 +123,7 @@ export default function SQLTxnPage() {
         <h3>Invocation</h3>
         <form
           onSubmit={executeTxn}>
-          <textarea id='invocation' name='invocation' cols={80} rows={24} defaultValue={JSON.stringify(DEFAULT_INVOCATION, null, 2)} />
+          <textarea id='invocation' name='invocation' cols={80} rows={24} defaultValue='' />
           <button id='submit' type='submit'>Execute Txn</button>
           <button id='reset' type='reset'>reset</button>
         </form>
