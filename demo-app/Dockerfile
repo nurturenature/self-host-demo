@@ -1,5 +1,5 @@
 # Use Node.js 20 Docker image as base
-FROM node:20
+FROM node:20 AS base
 
 ARG VITE_POWERSYNC_URL
 ARG VITE_BACKEND_URL
@@ -17,6 +17,7 @@ RUN npm install -g pnpm@9
 # Install dependencies
 RUN pnpm install --frozen-lockfile
 
+FROM base AS app
 # Copy the rest of the demo launcher code to the container
 COPY / ./
 

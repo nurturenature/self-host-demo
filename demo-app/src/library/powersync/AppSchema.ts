@@ -2,6 +2,7 @@ import { column, Schema, TableV2 } from '@powersync/web';
 
 export const LISTS_TABLE = 'lists';
 export const TODOS_TABLE = 'todos';
+export const LWW_TABLE = 'lww';
 
 const todos = new TableV2(
   {
@@ -22,9 +23,14 @@ const lists = new TableV2({
   owner_id: column.text
 });
 
+const lww = new TableV2({
+  v: column.text
+});
+
 export const AppSchema = new Schema({
   todos,
-  lists
+  lists,
+  lww
 });
 
 export type Database = (typeof AppSchema)['types'];
@@ -33,3 +39,4 @@ export type TodoRecord = Database['todos'];
 // export type Todo = RowType<typeof todos>;
 
 export type ListRecord = Database['lists'];
+export type LWWRecord = Database['lww'];

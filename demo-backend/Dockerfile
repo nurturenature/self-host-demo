@@ -19,10 +19,14 @@ WORKDIR /app
 
 RUN npm install -g pnpm@8
 
-RUN git init && \
-    git remote add origin https://github.com/powersync-ja/powersync-nodejs-backend-todolist-demo.git && \
-    git fetch origin $GIT_COMMIT && \
-    git checkout FETCH_HEAD
+# RUN git init && \
+#     git remote add origin https://github.com/powersync-ja/powersync-nodejs-backend-todolist-demo.git && \
+#     git fetch origin $GIT_COMMIT && \
+#     git checkout FETCH_HEAD
+
+RUN git clone https://github.com/nurturenature/powersync-nodejs-backend-todolist-demo.git --branch sqlconsole-upgrade --single-branch /powersync-nodejs-backend-todolist-demo
+
+WORKDIR /powersync-nodejs-backend-todolist-demo
 
 # Install dependencies
 RUN pnpm install

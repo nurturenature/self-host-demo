@@ -4,10 +4,12 @@ import TodoEditPage from './views/todo-lists/edit/page';
 import TodoListsPage from './views/todo-lists/page';
 import ViewsLayout from './views/layout';
 import SQLConsolePage from './views/sql-console/page';
+import SQLTxnPage from './views/sql-txn/page';
 
 export const TODO_LISTS_ROUTE = '/views/todo-lists';
 export const TODO_EDIT_ROUTE = '/views/todo-lists/:id';
 export const SQL_CONSOLE_ROUTE = '/sql-console';
+export const SQL_TXN_ROUTE = '/sql-txn';
 
 /**
  * Navigate to this route after authentication
@@ -37,6 +39,10 @@ export const router = createBrowserRouter([
       {
         path: SQL_CONSOLE_ROUTE,
         element: <SQLConsolePage />
+      },
+      {
+        path: SQL_TXN_ROUTE,
+        element: <SQLTxnPage />
       }
     ]
   }

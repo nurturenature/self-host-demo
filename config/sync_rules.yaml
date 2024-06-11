@@ -5,3 +5,4 @@ bucket_definitions:
     data:
       - SELECT * FROM lists
       - SELECT * FROM todos
+      - SELECT * FROM lww

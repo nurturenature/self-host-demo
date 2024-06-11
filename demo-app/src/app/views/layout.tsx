@@ -25,7 +25,7 @@ import React from 'react';
 import { useNavigationPanel } from '@/components/navigation/NavigationPanelContext';
 import { usePowerSync } from '@powersync/react';
 import { useNavigate } from 'react-router-dom';
-import { SQL_CONSOLE_ROUTE, TODO_LISTS_ROUTE } from '@/app/router';
+import { SQL_CONSOLE_ROUTE, SQL_TXN_ROUTE, TODO_LISTS_ROUTE } from '@/app/router';
 
 export default function ViewsLayout({ children }: { children: React.ReactNode }) {
   const powerSync = usePowerSync();
@@ -37,6 +37,11 @@ export default function ViewsLayout({ children }: { children: React.ReactNode })
 
   const NAVIGATION_ITEMS = React.useMemo(
     () => [
+      {
+        path: SQL_TXN_ROUTE,
+        title: 'SQL Txn',
+        icon: () => <TerminalIcon />
+      },
       {
         path: SQL_CONSOLE_ROUTE,
         title: 'SQL Console',
